@@ -4,8 +4,11 @@ function useVisualMode(initial) {
   const [mode, setMode] = useState(initial);
   const [history, setHistory] = useState([initial]);
 
-  function transition(newMode) {
-    setHistory((prev) => [...prev, newMode])
+  function transition(newMode, replace = false) {
+    setHistory((prev) => {
+      return replace ? [...prev.slice(0, prev.length - 1), newMode] : [...prev, newMode];
+      // if replace = true, replace the last item in the history with the new mode rather than adding newMode on at the end of the array
+    })
   }
 
   /* goals: 

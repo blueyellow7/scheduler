@@ -23,7 +23,7 @@ function useVisualMode(initial) {
     })
   }
 
-  return { mode: history[history.length -1], transition, back };
+  return { mode: history[history.length -1], history, transition, back };
 }
 
 export default useVisualMode;

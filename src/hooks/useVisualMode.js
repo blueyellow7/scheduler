@@ -2,8 +2,11 @@ import { useState } from "react";
 
 function useVisualMode(initial) {
   const [mode, setMode] = useState(initial);
-  return { mode };
 
+  function transition(newMode) {
+    setMode(newMode)
+  }
+  return { mode, transition };
 }
 
-export default useVisualMode
+export default useVisualMode;
